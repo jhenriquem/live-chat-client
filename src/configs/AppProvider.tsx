@@ -1,9 +1,10 @@
-import { useState } from "react";
-
+import { MessageProvider } from "./MessageContext";
 const AppProvider = ({ children }: any) => {
-
   return (
+    <MessageProvider>
+      {children}
+    </MessageProvider>
   )
-}
+};
 
-export default AppProvider
+export default AppProvider;
