@@ -8,12 +8,12 @@ function closePopUp() {
 }
 
 function WelcomePopUp({ setLoadChat, username }: any) {
-  const [userName, SetUserName] = useState<string>(" ")
+  const [userName, SetUserName] = useState<string>("")
 
 
   const saveUserName = () => {
-
-    localStorage.setItem("username", userName)
+    const usernameValid = userName.split(" ").join("-")
+    localStorage.setItem("username", usernameValid)
     closePopUp()
     setLoadChat(true)
   }
