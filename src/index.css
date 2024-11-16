@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-image: url("./assets/img_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
 
-body{
-background-image: url('./assets/img_background.jpg');;
-background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-
+@layer utilities {
+  .no-scroll-bar::-webkit-scrollbar {
+    display: none;
+  }
 }
