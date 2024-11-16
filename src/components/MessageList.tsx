@@ -8,7 +8,7 @@ function MessageList() {
 
   const renderList = messageList?.map((message: MessageI, index: number) => {
     const isCurrentUser = message.username.split(" ").join("-") === currentUser;
-    const messageClass = ` w-auto max-w-96  p-4 rounded-md text-white ${isCurrentUser ? "self-end bg-blue-500/90" : "bg-slate-800/50"}`
+    const messageClass = `w-auto max-w-96  p-4 rounded-md text-white ${isCurrentUser ? "self-end bg-blue-500/90" : "bg-slate-800/50"}`
 
     const messageUserName = isCurrentUser ? " " : message.username
     return (
@@ -24,7 +24,7 @@ function MessageList() {
     )
   })
   return (
-    <section className="flex flex-col py-4 px-8 gap-y-4 ">
+    <section className="h-full flex flex-col py-4 px-8 gap-y-4 ">
       {renderList}
     </section>
 
