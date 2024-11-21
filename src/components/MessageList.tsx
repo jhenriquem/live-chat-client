@@ -1,9 +1,11 @@
-import { useContext } from "react"
-import { MessageContext } from "../configs/MessageContext"
+import { RiLoader4Line } from "react-icons/ri"
 import MessageI from "../types/MessageType"
 
-function MessageList() {
-  const messageList = useContext(MessageContext)
+interface PropsI {
+  loading: boolean
+  messageList: MessageI[]
+}
+function MessageList({ messageList, loading }: PropsI) {
   const currentUser = localStorage.getItem("username")
 
   const renderList = messageList?.map((message: MessageI, index: number) => {
@@ -23,9 +25,11 @@ function MessageList() {
       </div >
     )
   })
+
+  const loadingElement = <p className="w-4 h-2 animate-spin text-blue-500 text-xl"><RiLoader4Line /></p>
   return (
-    <section className="h-full flex flex-col py-4 px-8 gap-y-4 ">
-      {renderList}
+    <section className="h-full flex flex-col items-center justify-center py-4 px-8 gap-y-4 ">
+      {loading ? renderList : loadingElement}
     </section>
 
   )
