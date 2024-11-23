@@ -19,7 +19,11 @@ function App() {
     const handleMessage = (event: MessageEvent) => {
       try {
         const parsedData = JSON.parse(event.data);
-        setMessageList(parsedData.list);
+
+        if (parsedData.action === "RETURN NEW MESSAGE")
+          setMessageList([...messageList, parsedData.messageAdded]);
+        else if (parsedData.action === "RETURN MESSAGE LIST")
+          setMessageList(parsedData.list);
         setLoading(true)
       } catch (error) {
         console.error("Erro ao processar a mensagem do WebSocket:", error);
@@ -39,7 +43,7 @@ function App() {
       <WelcomePopUp setLoadChat={setLoadChat} username={username} />
       {loadChat ?
         <main
-          className="bg-slate-800/90 w-full h-screen md:w-[50rem] md:h-[35rem] flex flex-col justify-between  mx-auto self-center md:rounded-xl">
+          className="bg-slate-800/90 w-full h-screen md:w-[55rem] md:h-[45rem] flex flex-col justify-between  mx-auto self-center md:rounded-xl">
           <HeaderChat />
           <MessageList loading={loading} messageList={messageList} />
           <SendBar />
